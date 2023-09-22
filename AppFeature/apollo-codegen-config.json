@@ -1,0 +1,30 @@
+{
+  "schemaNamespace" : "MovieListSchema",
+  "input" : {
+    "operationSearchPaths" : [
+      "**/*.graphql"
+    ],
+    "schemaSearchPaths" : [
+      "**/schema.json"
+    ]
+  },
+  "output" : {
+    "testMocks" : {
+      "swiftPackage" : {
+        "targetName":"MovieListMock"
+      }
+    },
+    "schemaTypes" : {
+      "path" : "./MovieListSchema",
+      "moduleType" : {
+        "swiftPackageManager" : {
+          "targetName" : "MovieListSchema"
+        }
+      }
+    },
+    "operations" : {
+      "inSchemaModule" : {
+      }
+    }
+  }
+}

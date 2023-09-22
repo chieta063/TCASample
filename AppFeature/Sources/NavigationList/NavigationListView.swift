@@ -1,0 +1,44 @@
+import ComposableArchitecture
+import SwiftUI
+
+struct NavigationListView: View {
+  let store: StoreOf<NavigationListFeature>
+  
+  var body: some View {
+    List {
+      Text("Stack-based-Navigation")
+        .onTapGesture {
+          store.send(.stackNavigationRoot)
+        }
+      Text("Tree-based-Navigation")
+        .onTapGesture {
+          store.send(.treeNavigationRoot)
+        }
+    }
+    .fullScreenCover(
+      store: store.scope(state: \.$destination, action: { .destination($0) }),
+      state: /NavigationListFeature.Destination.State.stackNavigationRoot,
+      action: NavigationListFeature.Destination.Action.stackNavigationRoot
+    ) { store in
+      StackNavigationRootView(store: store)
+    }
+    .fullScreenCover(
+      store: store.scope(state: \.$destination, action: { .destination($0) }),
+      state: /NavigationListFeature.Destination.State.treeNavigationRoot,
+      action: NavigationListFeature.Destination.Action.treeNavigationRoot
+    ) { store in
+      TreeNavigationRootView(store: store)
+    }
+  }
+}
+
+struct NavigationListView_Previews: PreviewProvider {
+  static var previews: some View {
+    NavigationListView(
+      store: Store(
+        initialState: NavigationListFeature.State(),
+        reducer: { NavigationListFeature() }
+      )
+    )
+  }
+}

@@ -131,4 +131,6 @@ iOSInjectionProject/
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
 
+apollo-ios-cli
+
 # End of https://www.toptal.com/developers/gitignore/api/macos,xcode,swift

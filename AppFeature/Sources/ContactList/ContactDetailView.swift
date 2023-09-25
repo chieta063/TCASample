@@ -1,10 +1,10 @@
 import ComposableArchitecture
 import SwiftUI
 
-struct ContactDetailView: View {
+public struct ContactDetailView: View {
   let store: StoreOf<ContactDetailFeature>
   
-  var body: some View {
+  public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       Form {
         Button("Delete") {
@@ -26,8 +26,8 @@ struct ContactDetailView: View {
   }
 }
 
-struct ContactDetailView_Previews: PreviewProvider {
-  static var previews: some View {
+public struct ContactDetailView_Previews: PreviewProvider {
+  public static var previews: some View {
     ContactDetailView(
       store: Store(
         initialState: ContactDetailFeature.State(

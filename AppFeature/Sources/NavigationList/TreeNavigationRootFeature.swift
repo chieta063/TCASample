@@ -1,17 +1,17 @@
 import ComposableArchitecture
 import Foundation
 
-struct TreeNavigationRootFeature: Reducer {
-  struct State: Equatable {
+public struct TreeNavigationRootFeature: Reducer {
+  public struct State: Equatable {
     @PresentationState var destination: Destination.State?
   }
   
-  enum Action: Equatable {
+  public enum Action: Equatable {
     case destination(PresentationAction<Destination.Action>)
     case toFirstTree
   }
   
-  var body: some ReducerOf<Self> {
+  public var body: some ReducerOf<Self> {
     Reduce { state, action in
       switch action {
       case .destination(_):
@@ -28,16 +28,16 @@ struct TreeNavigationRootFeature: Reducer {
 }
 
 extension TreeNavigationRootFeature {
-  struct Destination: Reducer {
-    enum State: Equatable {
+  public struct Destination: Reducer {
+    public enum State: Equatable {
       case firstTree(FirstTreeFeature.State)
     }
     
-    enum Action: Equatable {
+    public enum Action: Equatable {
       case firstTree(FirstTreeFeature.Action)
     }
     
-    var body: some ReducerOf<Self> {
+    public var body: some ReducerOf<Self> {
       Scope(state: /State.firstTree, action: /Action.firstTree) {
         FirstTreeFeature()
       }

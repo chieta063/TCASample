@@ -1,10 +1,10 @@
 import ComposableArchitecture
 import SwiftUI
 
-struct StackNavigationRootView: View {
+public struct StackNavigationRootView: View {
   let store: StoreOf<StackNavigationRootFeature>
   
-  var body: some View {
+  public var body: some View {
     NavigationStackStore(store.scope(state: \.path, action: { .path($0) })) {
       NavigationLink("To First Stack", state: StackNavigationRootFeature.Path.State.firstStack(.init()))
     } destination: { store in
@@ -26,8 +26,8 @@ struct StackNavigationRootView: View {
   }
 }
 
-struct StackNavigationRootView_Previews: PreviewProvider {
-  static var previews: some View {
+public struct StackNavigationRootView_Previews: PreviewProvider {
+  public static var previews: some View {
     StackNavigationRootView(
       store: Store(
         initialState: StackNavigationRootFeature.State(),

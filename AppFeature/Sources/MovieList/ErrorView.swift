@@ -1,9 +1,9 @@
 import SwiftUI
 
-enum DisplayError: Error, LocalizedError {
+public enum DisplayError: Error, LocalizedError {
   case filmNotFound
   
-  var errorDescription: String? {
+  public var errorDescription: String? {
     switch self {
     case .filmNotFound:
       return "Film not found."
@@ -11,10 +11,10 @@ enum DisplayError: Error, LocalizedError {
   }
 }
 
-struct ErrorView: View {
+public struct ErrorView: View {
   let error: DisplayError
   
-  var body: some View {
+  public var body: some View {
     VStack {
       Image(
         systemName: "exclamationmark.triangle.fill"
@@ -32,8 +32,8 @@ struct ErrorView: View {
   }
 }
 
-struct ErrorView_Previews: PreviewProvider {
-  static var previews: some View {
+public struct ErrorView_Previews: PreviewProvider {
+  public static var previews: some View {
     ErrorView(error: .filmNotFound)
   }
 }

@@ -4,10 +4,10 @@ import ComposableArchitecture
 import Foundation
 import MovieListSchema
 
-enum StarwarsClientError: Error, LocalizedError {
+public enum StarwarsClientError: Error, LocalizedError {
   case filmNotFound
   
-  var errorDescription: String? {
+  public var errorDescription: String? {
     switch self {
     case .filmNotFound:
       return "Film Not Found"
@@ -15,13 +15,13 @@ enum StarwarsClientError: Error, LocalizedError {
   }
 }
 
-struct StarwarsClient {
+public struct StarwarsClient {
   var fetchAllFilms: () async throws -> [AllFilmsQuery.Data.AllFilms.Film]
   var fetchFilm: (String) async throws -> FilmQuery.Data.Film
 }
 
 extension StarwarsClient: DependencyKey {
-  static var liveValue: StarwarsClient = Self {
+  public static var liveValue: StarwarsClient = Self {
     try await withCheckedThrowingContinuation { continuation in
       Network.shared.apollo.fetch(query: AllFilmsQuery()) { result in
         switch result {
@@ -50,13 +50,13 @@ extension StarwarsClient: DependencyKey {
     }
   }
   
-  static var testValue: StarwarsClient = Self {
+  public static var testValue: StarwarsClient = Self {
     return MockData.filmListResponse
   } fetchFilm: { _ in
     return MockData.filmDetailResponse
   }
   
-  static var previewValue: StarwarsClient = Self {
+  public static var previewValue: StarwarsClient = Self {
     return MockData.filmListResponse
   } fetchFilm: { _ in
     return MockData.filmDetailResponse
@@ -64,7 +64,7 @@ extension StarwarsClient: DependencyKey {
 }
 
 extension DependencyValues {
-  var starwarsClient: StarwarsClient {
+  public var starwarsClient: StarwarsClient {
     get { self[StarwarsClient.self] }
     set { self[StarwarsClient.self] = newValue }
   }

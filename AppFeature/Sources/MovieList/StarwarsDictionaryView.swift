@@ -1,10 +1,10 @@
 import ComposableArchitecture
 import SwiftUI
 
-struct StarwarsDictionaryView: View {
+public struct StarwarsDictionaryView: View {
   let store: StoreOf<StarwarsDictionaryFeature>
   
-  var body: some View {
+  public var body: some View {
     WithViewStore(store, observe: { $0 }, content: { viewStore in
       VStack {
         if viewStore.isLoading {
@@ -45,8 +45,8 @@ struct StarwarsDictionaryView: View {
   }
 }
 
-struct StarwarsDictionaryView_Previews: PreviewProvider {
-  static var previews: some View {
+public struct StarwarsDictionaryView_Previews: PreviewProvider {
+  public static var previews: some View {
     StarwarsDictionaryView(
       store: Store(
         initialState: StarwarsDictionaryFeature.State(

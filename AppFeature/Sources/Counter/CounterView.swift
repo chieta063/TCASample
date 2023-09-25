@@ -1,10 +1,10 @@
 import ComposableArchitecture
 import SwiftUI
 
-struct CounterView: View {
-  let store: StoreOf<CounterFeature>
+public struct CounterView: View {
+  public let store: StoreOf<CounterFeature>
   
-  var body: some View {
+  public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack {
         Text("\(viewStore.count)")
@@ -60,8 +60,8 @@ struct CounterView: View {
   }
 }
 
-struct CounterView_Previews: PreviewProvider {
-  static var previews: some View {
+public struct CounterView_Previews: PreviewProvider {
+  public static var previews: some View {
     CounterView(
       store: Store(
         initialState: CounterFeature.State(),

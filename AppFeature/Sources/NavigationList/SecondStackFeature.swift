@@ -1,15 +1,15 @@
 import ComposableArchitecture
 import Foundation
 
-struct SecondStackFeature: Reducer {
+public struct SecondStackFeature: Reducer {
   
-  struct State: Equatable {}
+  public struct State: Equatable {}
   
-  enum Action: Equatable {
+  public enum Action: Equatable {
     case popToRoute
   }
   
-  var body: some ReducerOf<Self> {
+  public var body: some ReducerOf<Self> {
     Reduce { _, _ in
         .none
     }

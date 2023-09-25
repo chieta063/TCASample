@@ -1,10 +1,10 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct FirstTreeView: View {
+public struct FirstTreeView: View {
   let store: StoreOf<FirstTreeFeature>
   
-  var body: some View {
+  public var body: some View {
     WithViewStore(store, observe: {$0}) { viewStore in
       List {
         Text("To Second View")
@@ -26,8 +26,8 @@ struct FirstTreeView: View {
   }
 }
 
-struct FIrstTreeView_Previews: PreviewProvider {
-  static var previews: some View {
+public struct FirstTreeView_Previews: PreviewProvider {
+  public static var previews: some View {
     FirstTreeView(store: Store(initialState: FirstTreeFeature.State(), reducer: {
       FirstTreeFeature()
     }))

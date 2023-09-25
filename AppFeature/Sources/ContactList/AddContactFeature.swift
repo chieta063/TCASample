@@ -1,24 +1,24 @@
 import ComposableArchitecture
 import Foundation
 
-struct AddContactFeature: Reducer {
-  struct State: Equatable {
+public struct AddContactFeature: Reducer {
+  public struct State: Equatable {
     var contact: Contact
   }
   
-  enum Action: Equatable {
+  public enum Action: Equatable {
     case cancelButtonTapped
     case delegate(Delegate)
     case saveButtonTapped
     case setName(String)
-    enum Delegate: Equatable {
+    public enum Delegate: Equatable {
       case saveContact(Contact)
     }
   }
   
   @Dependency(\.dismiss) var dismiss
   
-  func reduce(into state: inout State, action: Action) -> Effect<Action> {
+  public func reduce(into state: inout State, action: Action) -> Effect<Action> {
     switch action {
     case .cancelButtonTapped:
       return .run { _ in

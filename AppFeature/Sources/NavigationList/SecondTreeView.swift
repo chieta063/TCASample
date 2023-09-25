@@ -1,10 +1,10 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct SecondTreeView: View {
+public struct SecondTreeView: View {
   let store: StoreOf<SecondTreeFeature>
   
-  var body: some View {
+  public var body: some View {
     WithViewStore(store, observe: {$0}) { viewStore in
       VStack {
         Text("Second Tree View")
@@ -17,8 +17,8 @@ struct SecondTreeView: View {
   }
 }
 
-struct SecondTreeView_Previews: PreviewProvider {
-  static var previews: some View {
+public struct SecondTreeView_Previews: PreviewProvider {
+  public static var previews: some View {
     SecondTreeView(store: Store(initialState: SecondTreeFeature.State(), reducer: {
       SecondTreeFeature()
     }))

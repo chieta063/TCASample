@@ -2,15 +2,15 @@ import Foundation
 import ComposableArchitecture
 import MovieListSchema
 
-struct FilmDetailFeature: Reducer {
-  struct State: Equatable {
+public struct FilmDetailFeature: Reducer {
+  public struct State: Equatable {
     let filmId: ID
     var isLoading: Bool = false
     var film: FilmDetail?
     var displayError: DisplayError?
   }
   
-  enum Action: Equatable {
+  public enum Action: Equatable {
     case onAppear(ID)
     case onFilmLoaded(FilmDetail)
     case loadFilmFailure(DisplayError)
@@ -18,7 +18,7 @@ struct FilmDetailFeature: Reducer {
   
   @Dependency(\.starwarsClient) var client
   
-  func reduce(into state: inout State, action: Action) -> Effect<Action> {
+  public func reduce(into state: inout State, action: Action) -> Effect<Action> {
     switch action {
     case let .onAppear(filmId):
       state.isLoading = true

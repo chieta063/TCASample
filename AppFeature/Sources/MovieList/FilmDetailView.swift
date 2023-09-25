@@ -1,10 +1,10 @@
 import ComposableArchitecture
 import SwiftUI
 
-struct FilmDetailView: View {
-  let store: StoreOf<FilmDetailFeature>
+public struct FilmDetailView: View {
+  public let store: StoreOf<FilmDetailFeature>
   
-  var body: some View {
+  public var body: some View {
     WithViewStore(store, observe: {$0}) { viewStore in
       VStack {
         if viewStore.isLoading {
@@ -48,8 +48,8 @@ struct FilmDetailView: View {
   }
 }
 
-struct FilmDetailView_Previews: PreviewProvider {
-  static var previews: some View {
+public struct FilmDetailView_Previews: PreviewProvider {
+  public static var previews: some View {
     FilmDetailView(
       store: Store(
         initialState: FilmDetailFeature.State(

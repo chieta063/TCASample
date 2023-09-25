@@ -1,10 +1,10 @@
 import ComposableArchitecture
 import SwiftUI
 
-struct AddContactView: View {
+public struct AddContactView: View {
   let store: StoreOf<AddContactFeature>
   
-  var body: some View {
+  public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       Form {
         TextField("Name", text: viewStore.binding(get: \.contact.name, send: {
@@ -25,8 +25,8 @@ struct AddContactView: View {
   }
 }
 
-struct AddContactView_Previews: PreviewProvider {
-  static var previews: some View {
+public struct AddContactView_Previews: PreviewProvider {
+  public static var previews: some View {
     AddContactView(
       store: Store(
         initialState: AddContactFeature.State(

@@ -1,10 +1,10 @@
 import ComposableArchitecture
 import SwiftUI
 
-struct SecondStackView: View {
+public struct SecondStackView: View {
   let store: StoreOf<SecondStackFeature>
   
-  var body: some View {
+  public var body: some View {
     WithViewStore(store, observe: {$0}) { viewStore in
       VStack {
         Text("Second Stack View")
@@ -16,8 +16,8 @@ struct SecondStackView: View {
   }
 }
 
-struct SecondStackView_Previews: PreviewProvider {
-  static var previews: some View {
+public struct SecondStackView_Previews: PreviewProvider {
+  public static var previews: some View {
     SecondStackView(
       store: Store(
         initialState: SecondStackFeature.State(),

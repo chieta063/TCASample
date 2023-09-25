@@ -1,10 +1,10 @@
 import ComposableArchitecture
 import SwiftUI
 
-struct ContactListView: View {
+public struct ContactListView: View {
   let store: StoreOf<ContactsFeature>
   
-  var body: some View {
+  public var body: some View {
     List {
       ForEachStore(store.scope(
         state: \.contacts,
@@ -58,8 +58,8 @@ struct ContactListView: View {
   }
 }
 
-struct ContactListView_Preview: PreviewProvider {
-  static var previews: some View {
+public struct ContactListView_Preview: PreviewProvider {
+  public static var previews: some View {
     ContactListView(store: Store(initialState: ContactsFeature.State(), reducer: {
       ContactsFeature()
     }, withDependencies: { dependency in

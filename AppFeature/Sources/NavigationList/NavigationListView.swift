@@ -1,10 +1,10 @@
 import ComposableArchitecture
 import SwiftUI
 
-struct NavigationListView: View {
+public struct NavigationListView: View {
   let store: StoreOf<NavigationListFeature>
   
-  var body: some View {
+  public var body: some View {
     List {
       Text("Stack-based-Navigation")
         .onTapGesture {
@@ -32,8 +32,8 @@ struct NavigationListView: View {
   }
 }
 
-struct NavigationListView_Previews: PreviewProvider {
-  static var previews: some View {
+public struct NavigationListView_Previews: PreviewProvider {
+  public static var previews: some View {
     NavigationListView(
       store: Store(
         initialState: NavigationListFeature.State(),

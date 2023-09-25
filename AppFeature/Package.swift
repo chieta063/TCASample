@@ -12,7 +12,9 @@ let package = Package(
       name: "AppFeature",
       targets: [
         "Counter",
-        "ContactList"
+        "ContactList",
+        "MovieList",
+        "NavigationList"
       ]
     ),
   ],

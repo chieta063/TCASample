@@ -1,18 +1,18 @@
 import Foundation
 import ComposableArchitecture
 
-struct NavigationListFeature: Reducer {
-  struct State {
+public struct NavigationListFeature: Reducer {
+  public struct State {
     @PresentationState var destination: Destination.State?
   }
   
-  enum Action {
+  public enum Action {
     case destination(PresentationAction<Destination.Action>)
     case stackNavigationRoot
     case treeNavigationRoot
   }
   
-  var body: some ReducerOf<Self> {
+  public var body: some ReducerOf<Self> {
     Reduce { state, action in
       switch action {
       case .destination(_):
@@ -33,18 +33,18 @@ struct NavigationListFeature: Reducer {
 
 
 extension NavigationListFeature {
-  struct Destination: Reducer {
-    enum State {
+  public struct Destination: Reducer {
+    public enum State {
       case stackNavigationRoot(StackNavigationRootFeature.State)
       case treeNavigationRoot(TreeNavigationRootFeature.State)
     }
     
-    enum Action {
+    public enum Action {
       case stackNavigationRoot(StackNavigationRootFeature.Action)
       case treeNavigationRoot(TreeNavigationRootFeature.Action)
     }
     
-    var body: some ReducerOf<Self> {
+    public var body: some ReducerOf<Self> {
       Scope(state: /State.stackNavigationRoot, action: /Action.stackNavigationRoot) {
         StackNavigationRootFeature()
           ._printChanges()

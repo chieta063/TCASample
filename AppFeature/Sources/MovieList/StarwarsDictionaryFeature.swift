@@ -2,14 +2,14 @@ import Foundation
 import ComposableArchitecture
 import MovieListSchema
 
-struct StarwarsDictionaryFeature: Reducer {
-  struct State: Equatable {
+public struct StarwarsDictionaryFeature: Reducer {
+  public struct State: Equatable {
     var isInitialized: Bool = false
     var isLoading: Bool = false
     var filmList: IdentifiedArrayOf<FilmData> = []
   }
   
-  enum Action: Equatable {
+  public enum Action: Equatable {
     case onAppear
     case onLoadEnd(IdentifiedArrayOf<FilmData>)
     case films(id: ID, action: FilmDetailFeature.Action)
@@ -17,7 +17,7 @@ struct StarwarsDictionaryFeature: Reducer {
   
   @Dependency(\.starwarsClient) var client
   
-  func reduce(into state: inout State, action: Action) -> Effect<Action> {
+  public func reduce(into state: inout State, action: Action) -> Effect<Action> {
     switch action {
     case .onAppear:
       state.isLoading = true

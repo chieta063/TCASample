@@ -5,7 +5,7 @@ import MovieListSchema
 import MovieListMock
 import SwiftUI
 
-enum MockData {
+public enum MockData {
   private static let homeworld: Mock<Planet> = Mock(
     id: "cGxhbmV0czox",
     name: "Tatooine"

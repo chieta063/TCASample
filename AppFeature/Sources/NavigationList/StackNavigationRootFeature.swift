@@ -1,16 +1,16 @@
 import ComposableArchitecture
 import Foundation
 
-struct StackNavigationRootFeature: Reducer {
-  struct State {
+public struct StackNavigationRootFeature: Reducer {
+  public struct State {
     var path = StackState<Path.State>()
   }
   
-  enum Action {
+  public enum Action {
     case path(StackAction<Path.State, Path.Action>)
   }
   
-  var body: some ReducerOf<Self> {
+  public var body: some ReducerOf<Self> {
     Reduce { state, action in
       switch action {
       case let .path(.element(_, action)):
@@ -28,17 +28,17 @@ struct StackNavigationRootFeature: Reducer {
     }
   }
   
-  struct Path: Reducer {
-    enum State {
+  public struct Path: Reducer {
+    public enum State {
       case firstStack(FirstStackFeature.State)
       case secondStack(SecondStackFeature.State)
     }
-    enum Action {
+    public enum Action {
       case firstStack(FirstStackFeature.Action)
       case secondStack(SecondStackFeature.Action)
     }
     
-    var body: some ReducerOf<Self> {
+    public var body: some ReducerOf<Self> {
       Scope(state: /State.firstStack, action: /Action.firstStack) {
         FirstStackFeature()
       }

@@ -1,12 +1,12 @@
 import ComposableArchitecture
 import Foundation
 
-struct FirstStackFeature: Reducer {
-  struct State {}
+public struct FirstStackFeature: Reducer {
+  public struct State {}
   
-  enum Action {}
+  public enum Action {}
   
-  var body: some ReducerOf<Self> {
+  public var body: some ReducerOf<Self> {
     Reduce { _, _ in
         .none
     }

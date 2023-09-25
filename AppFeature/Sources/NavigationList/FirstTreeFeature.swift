@@ -1,12 +1,12 @@
 import Foundation
 import ComposableArchitecture
 
-struct FirstTreeFeature: Reducer {
-  struct State: Equatable {
+public struct FirstTreeFeature: Reducer {
+  public struct State: Equatable {
     @PresentationState var destination: Destination.State?
   }
   
-  enum Action: Equatable {
+  public enum Action: Equatable {
     case destination(PresentationAction<Destination.Action>)
     case toSecondTree
     case dismiss
@@ -14,7 +14,7 @@ struct FirstTreeFeature: Reducer {
   
   @Dependency(\.dismiss) var dismiss
   
-  var body: some ReducerOf<Self> {
+  public var body: some ReducerOf<Self> {
     Reduce { state, action in
       switch action {
       case .destination(_):
@@ -36,16 +36,16 @@ struct FirstTreeFeature: Reducer {
 
 
 extension FirstTreeFeature {
-  struct Destination: Reducer {
-    enum State: Equatable {
+  public struct Destination: Reducer {
+    public enum State: Equatable {
       case secondTree(SecondTreeFeature.State)
     }
     
-    enum Action: Equatable {
+    public enum Action: Equatable {
       case secondTree(SecondTreeFeature.Action)
     }
     
-    var body: some ReducerOf<Self> {
+    public var body: some ReducerOf<Self> {
       Scope(state: /State.secondTree, action: /Action.secondTree) {
         SecondTreeFeature()
       }

@@ -1,9 +1,9 @@
 import ComposableArchitecture
 import SwiftUI
 
-struct TreeNavigationRootView: View {
+public struct TreeNavigationRootView: View {
   let store: StoreOf<TreeNavigationRootFeature>
-  var body: some View {
+  public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       List {
         Text("To First View")
@@ -22,8 +22,8 @@ struct TreeNavigationRootView: View {
   }
 }
 
-struct TreeNavigationRootView_Previews: PreviewProvider {
-  static var previews: some View {
+public struct TreeNavigationRootView_Previews: PreviewProvider {
+  public static var previews: some View {
     TreeNavigationRootView(
       store: Store(
         initialState: TreeNavigationRootFeature.State(),

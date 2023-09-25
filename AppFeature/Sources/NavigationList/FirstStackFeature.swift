@@ -11,8 +11,6 @@ public struct FirstStackFeature: Reducer {
   public init() {}
   
   public var body: some ReducerOf<Self> {
-    Reduce { _, _ in
-        .none
-    }
+    EmptyReducer()
   }
 }

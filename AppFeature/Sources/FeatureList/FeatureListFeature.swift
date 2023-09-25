@@ -25,11 +25,6 @@ public struct FeatureListFeature: Reducer {
   public init() {}
   
   public var body: some ReducerOf<Self> {
-    Reduce { state, action in
-      switch action {
-      default:
-        return .none
-      }
-    }
+    EmptyReducer()
   }
 }

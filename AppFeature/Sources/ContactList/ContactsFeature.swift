@@ -6,13 +6,13 @@ public struct ContactsFeature: Reducer {
   public struct State: Equatable {
     @PresentationState var destination: Destination.State?
     var contacts: IdentifiedArrayOf<Contact> = []
-    
+
     public init(destination: Destination.State? = nil, contacts: IdentifiedArrayOf<Contact> = []) {
       self.destination = destination
       self.contacts = contacts
     }
   }
-  
+
   public enum Action: Equatable {
     case contacts(id: Contact.ID, action: ContactDetailFeature.Action)
     case addButtonTapped
@@ -22,14 +22,14 @@ public struct ContactsFeature: Reducer {
       case confirmDeletion(id: Contact.ID)
     }
   }
-  
+
   // Test時にUUIDをMockできるようにするために依存関係を追加する
   @Dependency(\.uuid) var uuid
-  
+
   @Environment(\.presentationMode) var presentation
-  
+
   public init() {}
-  
+
   public var body: some ReducerOf<Self> {
     Reduce { state, action in
       switch action {
@@ -59,20 +59,20 @@ public struct ContactsFeature: Reducer {
   }
 }
 
-extension ContactsFeature {
-  public struct Destination: Reducer {
+public extension ContactsFeature {
+  struct Destination: Reducer {
     public enum State: Equatable {
       case addContact(AddContactFeature.State)
       case contact(ContactDetailFeature.State)
     }
-    
+
     public enum Action: Equatable {
       case addContact(AddContactFeature.Action)
       case contact(ContactDetailFeature.Action)
     }
-    
+
     public init() {}
-    
+
     public var body: some ReducerOf<Self> {
       Scope(state: /State.addContact, action: /Action.addContact) {
         AddContactFeature()

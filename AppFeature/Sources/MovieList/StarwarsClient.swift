@@ -6,7 +6,7 @@ import MovieListSchema
 
 public enum StarwarsClientError: Error, LocalizedError {
   case filmNotFound
-  
+
   public var errorDescription: String? {
     switch self {
     case .filmNotFound:
@@ -49,22 +49,22 @@ extension StarwarsClient: DependencyKey {
       }
     }
   }
-  
+
   public static var testValue: StarwarsClient = Self {
-    return MockData.filmListResponse
+    MockData.filmListResponse
   } fetchFilm: { _ in
-    return MockData.filmDetailResponse
+    MockData.filmDetailResponse
   }
-  
+
   public static var previewValue: StarwarsClient = Self {
-    return MockData.filmListResponse
+    MockData.filmListResponse
   } fetchFilm: { _ in
-    return MockData.filmDetailResponse
+    MockData.filmDetailResponse
   }
 }
 
-extension DependencyValues {
-  public var starwarsClient: StarwarsClient {
+public extension DependencyValues {
+  var starwarsClient: StarwarsClient {
     get { self[StarwarsClient.self] }
     set { self[StarwarsClient.self] = newValue }
   }

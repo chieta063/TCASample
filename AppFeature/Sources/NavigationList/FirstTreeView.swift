@@ -1,15 +1,15 @@
-import SwiftUI
 import ComposableArchitecture
+import SwiftUI
 
 public struct FirstTreeView: View {
   let store: StoreOf<FirstTreeFeature>
-  
+
   public init(store: StoreOf<FirstTreeFeature>) {
     self.store = store
   }
-  
+
   public var body: some View {
-    WithViewStore(store, observe: {$0}) { viewStore in
+    WithViewStore(store, observe: { $0 }) { viewStore in
       List {
         Text("To Second View")
           .onTapGesture {
@@ -22,11 +22,12 @@ public struct FirstTreeView: View {
       }
     }
     .fullScreenCover(
-      store: store.scope(state: \.$destination, action: {.destination($0)}),
+      store: store.scope(state: \.$destination, action: { .destination($0) }),
       state: /FirstTreeFeature.Destination.State.secondTree,
-      action: FirstTreeFeature.Destination.Action.secondTree) { store in
-        SecondTreeView(store: store)
-      }
+      action: FirstTreeFeature.Destination.Action.secondTree
+    ) { store in
+      SecondTreeView(store: store)
+    }
   }
 }
 

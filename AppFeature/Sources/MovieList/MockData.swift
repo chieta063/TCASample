@@ -1,8 +1,8 @@
 import ApolloTestSupport
 import ComposableArchitecture
 import Foundation
-import MovieListSchema
 import MovieListMock
+import MovieListSchema
 import SwiftUI
 
 public enum MockData {
@@ -10,14 +10,14 @@ public enum MockData {
     id: "cGxhbmV0czox",
     name: "Tatooine"
   )
-  
+
   private static let person: Mock<Person> = Mock(
     birthYear: "19BBY",
     homeworld: homeworld,
     id: "cGVvcGxlOjE=",
     name: "Luke Skywalker"
   )
-  
+
   private static let film: Mock<Film> = .init(
     characterConnection: Mock(characters: [person]),
     id: "ZmlsbXM6MQ==",
@@ -25,10 +25,10 @@ public enum MockData {
     releaseDate: "1977-05-25",
     title: "A New Hope"
   )
-  
+
   public static let filmListResponse: [FilmData] = [
-    FilmData.from(film)
+    FilmData.from(film),
   ]
-  
+
   public static let filmDetailResponse: FilmDetail = FilmDetail.from(film)
 }

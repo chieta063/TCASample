@@ -1,27 +1,27 @@
-import Foundation
 import ComposableArchitecture
+import Foundation
 
 public struct NavigationListFeature: Reducer {
   public struct State {
     @PresentationState var destination: Destination.State?
-    
+
     public init(destination: Destination.State? = nil) {
       self.destination = destination
     }
   }
-  
+
   public enum Action {
     case destination(PresentationAction<Destination.Action>)
     case stackNavigationRoot
     case treeNavigationRoot
   }
-  
+
   public init() {}
-  
+
   public var body: some ReducerOf<Self> {
     Reduce { state, action in
       switch action {
-      case .destination(_):
+      case .destination:
         return .none
       case .stackNavigationRoot:
         state.destination = .stackNavigationRoot(.init())
@@ -37,19 +37,18 @@ public struct NavigationListFeature: Reducer {
   }
 }
 
-
-extension NavigationListFeature {
-  public struct Destination: Reducer {
+public extension NavigationListFeature {
+  struct Destination: Reducer {
     public enum State {
       case stackNavigationRoot(StackNavigationRootFeature.State)
       case treeNavigationRoot(TreeNavigationRootFeature.State)
     }
-    
+
     public enum Action {
       case stackNavigationRoot(StackNavigationRootFeature.Action)
       case treeNavigationRoot(TreeNavigationRootFeature.Action)
     }
-    
+
     public var body: some ReducerOf<Self> {
       Scope(state: /State.stackNavigationRoot, action: /Action.stackNavigationRoot) {
         StackNavigationRootFeature()

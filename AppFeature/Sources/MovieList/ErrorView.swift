@@ -2,7 +2,7 @@ import SwiftUI
 
 public enum DisplayError: Error, LocalizedError {
   case filmNotFound
-  
+
   public var errorDescription: String? {
     switch self {
     case .filmNotFound:
@@ -13,7 +13,7 @@ public enum DisplayError: Error, LocalizedError {
 
 public struct ErrorView: View {
   let error: DisplayError
-  
+
   public var body: some View {
     VStack {
       Image(

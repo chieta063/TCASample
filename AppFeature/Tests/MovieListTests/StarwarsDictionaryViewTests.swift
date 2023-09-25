@@ -6,8 +6,8 @@
 //
 
 import ComposableArchitecture
-import SnapshotTesting
 @testable import MovieList
+import SnapshotTesting
 import SwiftUI
 import XCTest
 
@@ -35,7 +35,7 @@ final class StarwarsDictionaryViewTests: XCTestCase {
       named: "Default"
     )
   }
-  
+
   func testSnapshotEmpty() {
     let view = StarwarsDictionaryView(store: Store(initialState: StarwarsDictionaryFeature.State(), reducer: {
       StarwarsDictionaryFeature()

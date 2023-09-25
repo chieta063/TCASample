@@ -11,13 +11,13 @@ extension NumberFactClient: DependencyKey {
       .data(from: URL(string: "http://numbersapi.com/\(number)")!)
     return String(decoding: data, as: UTF8.self)
   }
-  
-  public static var testValue: NumberFactClient = Self { number in
-    return "0 is the atomic number of the theoretical element tetraneutron."
+
+  public static var testValue: NumberFactClient = Self { _ in
+    "0 is the atomic number of the theoretical element tetraneutron."
   }
-  
-  public static var previewValue: NumberFactClient = Self { number in
-    return "0 is the atomic number of the theoretical element tetraneutron."
+
+  public static var previewValue: NumberFactClient = Self { _ in
+    "0 is the atomic number of the theoretical element tetraneutron."
   }
 }
 

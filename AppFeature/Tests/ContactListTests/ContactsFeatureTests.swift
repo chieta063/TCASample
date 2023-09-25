@@ -6,8 +6,8 @@
 //
 
 import ComposableArchitecture
-import XCTest
 @testable import ContactList
+import XCTest
 
 @MainActor
 final class ContactsFeatureTests: XCTestCase {
@@ -39,14 +39,14 @@ final class ContactsFeatureTests: XCTestCase {
       )
     ) {
       $0.contacts = [
-        Contact(id: UUID(0), name: "Blob Jr.")
+        Contact(id: UUID(0), name: "Blob Jr."),
       ]
     }
     await store.receive(.destination(.dismiss)) {
       $0.destination = nil
     }
   }
-  
+
   // 状態の変化を考慮しない非網羅的なテスト
   func testAddFlow_NonExhaustive() async {
     let store = TestStore(initialState: ContactsFeature.State()) {
@@ -55,17 +55,17 @@ final class ContactsFeatureTests: XCTestCase {
       dependencies.uuid = .incrementing
     }
     store.exhaustivity = .off
-    
+
     await store.send(.addButtonTapped)
     await store.send(.destination(.presented(.addContact(.setName("Blob Jr.")))))
     await store.send(.destination(.presented(.addContact(.saveButtonTapped))))
     await store.skipReceivedActions()
     store.assert { state in
-      state.contacts = [Contact(id: UUID(00000000-0000-0000-0000-000000000000), name: "Blob Jr.")]
+      state.contacts = [Contact(id: UUID(00_000_000 - 0000 - 0000 - 0000 - 000_000_000_000), name: "Blob Jr.")]
       state.destination = nil
     }
   }
-  
+
 //  // 連絡先の削除テスト
 //  func testDeleteContact() async {
 //    let store = TestStore(
@@ -88,4 +88,3 @@ final class ContactsFeatureTests: XCTestCase {
 //    }
 //  }
 }
-

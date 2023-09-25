@@ -4,12 +4,12 @@ import Foundation
 public struct AddContactFeature: Reducer {
   public struct State: Equatable {
     var contact: Contact
-    
+
     public init(contact: Contact) {
       self.contact = contact
     }
   }
-  
+
   public enum Action: Equatable {
     case cancelButtonTapped
     case delegate(Delegate)
@@ -19,12 +19,11 @@ public struct AddContactFeature: Reducer {
       case saveContact(Contact)
     }
   }
-  
+
   @Dependency(\.dismiss) var dismiss
-  
-  public init() {
-  }
-  
+
+  public init() {}
+
   public func reduce(into state: inout State, action: Action) -> Effect<Action> {
     switch action {
     case .cancelButtonTapped:

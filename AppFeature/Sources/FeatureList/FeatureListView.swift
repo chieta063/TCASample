@@ -14,7 +14,7 @@ import SwiftUI
 
 public struct FeatureListView: View {
   let store: StoreOf<FeatureListFeature>
-  
+
   public init(store: StoreOf<FeatureListFeature>) {
     self.store = store
   }

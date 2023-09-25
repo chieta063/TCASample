@@ -6,8 +6,8 @@
 //
 
 import ComposableArchitecture
-import SnapshotTesting
 @testable import ContactList
+import SnapshotTesting
 import SwiftUI
 import XCTest
 
@@ -16,22 +16,22 @@ final class ContactListViewTest: XCTestCase {
   override class func setUp() {
     isRecording = false
   }
-  
+
   func testSnapshotEmpty() {
     let view = ContactListView_Preview.previews
-    
+
     assertSnapshot(
       matching: UIHostingController(rootView: view),
       as: .image(on: .iPhone13Pro),
       named: "Default"
     )
   }
-  
+
   func testSnapshotExistData() {
     let view = ContactListView_Preview.previews as! ContactListView
-    
+
     view.store.send(.addButtonTapped)
-    
+
     view.store.send(
       .destination(
         .presented(
@@ -43,7 +43,7 @@ final class ContactListViewTest: XCTestCase {
         )
       )
     )
-    
+
     assertSnapshot(
       matching: UIHostingController(rootView: view),
       as: .image(on: .iPhone13Pro),

@@ -1,6 +1,6 @@
-import SwiftUI
-import FeatureList
 import ComposableArchitecture
+import FeatureList
+import SwiftUI
 
 @main
 struct TCASampleApp: App {

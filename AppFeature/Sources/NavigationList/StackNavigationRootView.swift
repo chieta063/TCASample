@@ -3,11 +3,11 @@ import SwiftUI
 
 public struct StackNavigationRootView: View {
   let store: StoreOf<StackNavigationRootFeature>
-  
+
   public init(store: StoreOf<StackNavigationRootFeature>) {
     self.store = store
   }
-  
+
   public var body: some View {
     NavigationStackStore(store.scope(state: \.path, action: { .path($0) })) {
       NavigationLink("To First Stack", state: StackNavigationRootFeature.Path.State.firstStack(.init()))
@@ -16,14 +16,14 @@ public struct StackNavigationRootView: View {
       case .firstStack:
         CaseLet(
           /StackNavigationRootFeature.Path.State.firstStack,
-           action: StackNavigationRootFeature.Path.Action.firstStack,
-           then: FirstStackView.init(store:)
+          action: StackNavigationRootFeature.Path.Action.firstStack,
+          then: FirstStackView.init(store:)
         )
       case .secondStack:
         CaseLet(
           /StackNavigationRootFeature.Path.State.secondStack,
-           action: StackNavigationRootFeature.Path.Action.secondStack,
-           then: SecondStackView.init(store:)
+          action: StackNavigationRootFeature.Path.Action.secondStack,
+          then: SecondStackView.init(store:)
         )
       }
     }

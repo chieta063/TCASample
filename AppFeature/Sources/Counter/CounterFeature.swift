@@ -1,5 +1,5 @@
-import Foundation
 import ComposableArchitecture
+import Foundation
 
 public struct CounterFeature: Reducer {
   public struct State: Equatable {
@@ -7,7 +7,7 @@ public struct CounterFeature: Reducer {
     var fact: String?
     var isLoading = false
     var isTimerRunning = false
-    
+
     public init(count: Int = 0, fact: String? = nil, isLoading: Bool = false, isTimerRunning: Bool = false) {
       self.count = count
       self.fact = fact
@@ -15,7 +15,7 @@ public struct CounterFeature: Reducer {
       self.isTimerRunning = isTimerRunning
     }
   }
-  
+
   public enum Action: Equatable {
     case decrementButtonTapped
     case factButtonTapped
@@ -24,16 +24,16 @@ public struct CounterFeature: Reducer {
     case timerTick
     case toggleTimerButtonTapped
   }
-  
+
   public enum CancelID {
     case timer
   }
-  
+
   @Dependency(\.continuousClock) var clock
   @Dependency(\.numberFact) var numberFact
-  
+
   public init() {}
-  
+
   public func reduce(into state: inout State, action: Action) -> Effect<Action> {
     switch action {
     case .decrementButtonTapped:

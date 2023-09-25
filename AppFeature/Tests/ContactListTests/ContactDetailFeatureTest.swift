@@ -6,8 +6,8 @@
 //
 
 import ComposableArchitecture
-import XCTest
 @testable import ContactList
+import XCTest
 
 @MainActor
 final class ContactDetailFeatureTest: XCTestCase {
@@ -26,7 +26,7 @@ final class ContactDetailFeatureTest: XCTestCase {
       )
     }
   }
-  
+
   /// 連絡先削除の承認時にDelegateが発行されること
   func testConfirmDeletion() async {
     let store = TestStore(
@@ -36,9 +36,7 @@ final class ContactDetailFeatureTest: XCTestCase {
     ) {
       ContactDetailFeature()
     } withDependencies: { dependency in
-      dependency.dismiss = DismissEffect({
-        
-      })
+      dependency.dismiss = DismissEffect {}
     }
     await store.send(.destination(
       .presented(

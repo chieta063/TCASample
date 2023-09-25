@@ -3,13 +3,13 @@ import SwiftUI
 
 public struct SecondStackView: View {
   let store: StoreOf<SecondStackFeature>
-  
+
   public init(store: StoreOf<SecondStackFeature>) {
     self.store = store
   }
-  
+
   public var body: some View {
-    WithViewStore(store, observe: {$0}) { viewStore in
+    WithViewStore(store, observe: { $0 }) { viewStore in
       VStack {
         Text("Second Stack View")
         Button("PopToRoot") {

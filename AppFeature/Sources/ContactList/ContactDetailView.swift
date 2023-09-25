@@ -3,11 +3,11 @@ import SwiftUI
 
 public struct ContactDetailView: View {
   let store: StoreOf<ContactDetailFeature>
-  
+
   public init(store: StoreOf<ContactDetailFeature>) {
     self.store = store
   }
-  
+
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       Form {

@@ -1,15 +1,15 @@
-import SwiftUI
 import ComposableArchitecture
+import SwiftUI
 
 public struct SecondTreeView: View {
   let store: StoreOf<SecondTreeFeature>
-  
+
   public init(store: StoreOf<SecondTreeFeature>) {
     self.store = store
   }
-  
+
   public var body: some View {
-    WithViewStore(store, observe: {$0}) { viewStore in
+    WithViewStore(store, observe: { $0 }) { viewStore in
       VStack {
         Text("Second Tree View")
           .padding()

@@ -3,11 +3,11 @@ import SwiftUI
 
 public struct ContactListView: View {
   let store: StoreOf<ContactsFeature>
-  
+
   public init(store: StoreOf<ContactsFeature>) {
     self.store = store
   }
-  
+
   public var body: some View {
     List {
       ForEachStore(store.scope(
@@ -67,9 +67,9 @@ public struct ContactListView_Preview: PreviewProvider {
     ContactListView(store: Store(initialState: ContactsFeature.State(), reducer: {
       ContactsFeature()
     }, withDependencies: { dependency in
-      dependency.uuid = UUIDGenerator({
+      dependency.uuid = UUIDGenerator {
         UUID()
-      })
+      }
     }))
   }
 }

@@ -29,7 +29,7 @@ final class FilmDetailFeatureTests: XCTestCase {
       $0.isLoading = false
     }
   }
-  
+
   /// 読み込み失敗時の表示エラーが発行されること
   func testInitialLoadError() async {
     let store = TestStore(

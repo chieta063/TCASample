@@ -5,11 +5,11 @@
 //  Created by 阿部紘明 on 2023/08/23.
 //
 
-import XCTest
 import ComposableArchitecture
 @testable import MovieList
-import MovieListSchema
 import MovieListMock
+import MovieListSchema
+import XCTest
 
 @MainActor
 final class StarwarsDictionaryFeatureTests: XCTestCase {

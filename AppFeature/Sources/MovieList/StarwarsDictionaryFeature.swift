@@ -1,5 +1,5 @@
-import Foundation
 import ComposableArchitecture
+import Foundation
 import MovieListSchema
 
 public struct StarwarsDictionaryFeature: Reducer {
@@ -7,24 +7,24 @@ public struct StarwarsDictionaryFeature: Reducer {
     var isInitialized: Bool = false
     var isLoading: Bool = false
     var filmList: IdentifiedArrayOf<FilmData> = []
-    
+
     public init(isInitialized: Bool = false, isLoading: Bool = false, filmList: IdentifiedArrayOf<FilmData> = []) {
       self.isInitialized = isInitialized
       self.isLoading = isLoading
       self.filmList = filmList
     }
   }
-  
+
   public enum Action: Equatable {
     case onAppear
     case onLoadEnd(IdentifiedArrayOf<FilmData>)
     case films(id: ID, action: FilmDetailFeature.Action)
   }
-  
+
   @Dependency(\.starwarsClient) var client
-  
+
   public init() {}
-  
+
   public func reduce(into state: inout State, action: Action) -> Effect<Action> {
     switch action {
     case .onAppear:
@@ -37,7 +37,7 @@ public struct StarwarsDictionaryFeature: Reducer {
           await send(.onLoadEnd([]))
         }
       }
-    case .onLoadEnd(let filmList):
+    case let .onLoadEnd(filmList):
       state.isLoading = false
       state.filmList = filmList
       state.isInitialized = true

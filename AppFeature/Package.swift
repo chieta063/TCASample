@@ -8,15 +8,10 @@ let package = Package(
   platforms: [.iOS(.v16)],
   products: [
     // Products define the executables and libraries a package produces, making them visible to other packages.
-    .library(
-      name: "AppFeature",
-      targets: [
-        "Counter",
-        "ContactList",
-        "MovieList",
-        "NavigationList"
-      ]
-    ),
+    .library(name: "Counter", targets: ["Counter"]),
+    .library(name: "ContactList", targets: ["ContactList"]),
+    .library(name: "NavigationList", targets: ["NavigationList"]),
+    .library(name: "MovieList", targets: ["MovieList"]),
   ],
   dependencies: [
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.2.0"),

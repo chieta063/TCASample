@@ -65,6 +65,13 @@ let package = Package(
         "Counter",
         .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
       ]
-    )
+    ),
+    .testTarget(
+      name: "ContactListTests",
+      dependencies: [
+        "ContactList",
+        .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
+      ]
+    ),
   ]
 )

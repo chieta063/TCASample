@@ -2,7 +2,7 @@ import ComposableArchitecture
 import Foundation
 import MovieListSchema
 
-public struct StarwarsDictionaryFeature: Reducer {
+public struct MovieListFeature: Reducer {
   public struct State: Equatable {
     var isInitialized: Bool = false
     var isLoading: Bool = false

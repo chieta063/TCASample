@@ -1,10 +1,10 @@
 import ComposableArchitecture
 import SwiftUI
 
-public struct StarwarsDictionaryView: View {
-  let store: StoreOf<StarwarsDictionaryFeature>
+public struct MovieListView: View {
+  let store: StoreOf<MovieListFeature>
 
-  public init(store: StoreOf<StarwarsDictionaryFeature>) {
+  public init(store: StoreOf<MovieListFeature>) {
     self.store = store
   }
 
@@ -17,7 +17,7 @@ public struct StarwarsDictionaryView: View {
           List {
             ForEachStore(store.scope(
               state: \.filmList,
-              action: StarwarsDictionaryFeature.Action.films(id:action:)
+              action: MovieListFeature.Action.films(id:action:)
             )) { store in
               WithViewStore(store, observe: { $0 }) { viewStore in
                 NavigationLink(viewStore.title ?? "") {
@@ -49,18 +49,18 @@ public struct StarwarsDictionaryView: View {
   }
 }
 
-public struct StarwarsDictionaryView_Previews: PreviewProvider {
+public struct MovieListView_Previews: PreviewProvider {
   public static var previews: some View {
-    StarwarsDictionaryView(
+    MovieListView(
       store: Store(
-        initialState: StarwarsDictionaryFeature.State(
+        initialState: MovieListFeature.State(
           isInitialized: true,
           isLoading: false,
           filmList: IdentifiedArray(
             uniqueElements: MockData.filmListResponse
           )
         ),
-        reducer: { StarwarsDictionaryFeature() }
+        reducer: { MovieListFeature() }
       )
     )
   }

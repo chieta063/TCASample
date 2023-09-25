@@ -12,13 +12,13 @@ import MovieListSchema
 import XCTest
 
 @MainActor
-final class StarwarsDictionaryFeatureTests: XCTestCase {
+final class MovieListFeatureTests: XCTestCase {
   /// 画面表示時の読み込みが正常に処理されること
   func testInitialLoadFlow() async {
     let store = TestStore(
-      initialState: StarwarsDictionaryFeature.State()
+      initialState: MovieListFeature.State()
     ) {
-      StarwarsDictionaryFeature()
+      MovieListFeature()
     }
     await store.send(.onAppear) {
       $0.isLoading = true

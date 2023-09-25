@@ -12,13 +12,13 @@ import SwiftUI
 import XCTest
 
 @MainActor
-final class StarwarsDictionaryViewTests: XCTestCase {
+final class MovieListViewTests: XCTestCase {
   override class func setUp() {
     isRecording = false
   }
 
   func testSnapshotLoading() {
-    let view = StarwarsDictionaryView_Previews.previews as! StarwarsDictionaryView
+    let view = MovieListView_Previews.previews as! MovieListView
     view.store.send(.onAppear)
     assertSnapshot(
       matching: UIHostingController(rootView: view),
@@ -28,7 +28,7 @@ final class StarwarsDictionaryViewTests: XCTestCase {
   }
 
   func testSnapshotDataLoaded() {
-    let view = StarwarsDictionaryView_Previews.previews as! StarwarsDictionaryView
+    let view = MovieListView_Previews.previews as! MovieListView
     assertSnapshot(
       matching: UIHostingController(rootView: view),
       as: .image(on: .iPhone13Pro),
@@ -37,8 +37,8 @@ final class StarwarsDictionaryViewTests: XCTestCase {
   }
 
   func testSnapshotEmpty() {
-    let view = StarwarsDictionaryView(store: Store(initialState: StarwarsDictionaryFeature.State(), reducer: {
-      StarwarsDictionaryFeature()
+    let view = MovieListView(store: Store(initialState: MovieListFeature.State(), reducer: {
+      MovieListFeature()
     }))
     view.store.send(.onLoadEnd([]))
     assertSnapshot(

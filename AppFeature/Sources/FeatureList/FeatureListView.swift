@@ -40,8 +40,8 @@ public struct FeatureListView: View {
         )
         NavigationLink(
           "StarwarsDictionary",
-          destination: StarwarsDictionaryView(store: Store(initialState: StarwarsDictionaryFeature.State(), reducer: {
-            StarwarsDictionaryFeature()
+          destination: MovieListView(store: Store(initialState: MovieListFeature.State(), reducer: {
+            MovieListFeature()
           }))
         )
         NavigationLink(

@@ -4,6 +4,10 @@ import SwiftUI
 public struct StarwarsDictionaryView: View {
   let store: StoreOf<StarwarsDictionaryFeature>
   
+  public init(store: StoreOf<StarwarsDictionaryFeature>) {
+    self.store = store
+  }
+  
   public var body: some View {
     WithViewStore(store, observe: { $0 }, content: { viewStore in
       VStack {

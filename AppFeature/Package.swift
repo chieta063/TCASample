@@ -12,6 +12,7 @@ let package = Package(
     .library(name: "ContactList", targets: ["ContactList"]),
     .library(name: "NavigationList", targets: ["NavigationList"]),
     .library(name: "MovieList", targets: ["MovieList"]),
+    .library(name: "FeatureList", targets: ["FeatureList"])
   ],
   dependencies: [
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.2.0"),
@@ -22,19 +23,19 @@ let package = Package(
     .target(
       name: "Counter",
       dependencies: [
-        .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+        .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
       ]
     ),
     .target(
       name: "ContactList",
       dependencies: [
-        .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+        .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
       ]
     ),
     .target(
       name: "NavigationList",
       dependencies: [
-        .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+        .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
       ]
     ),
     .target(
@@ -44,7 +45,17 @@ let package = Package(
         .product(name: "Apollo", package: "apollo-ios"),
         .product(name: "ApolloTestSupport", package: "apollo-ios"),
         .product(name: "MovieListSchema", package: "MovieListSchema"),
-        .product(name: "MovieListMock", package: "MovieListSchema")
+        .product(name: "MovieListMock", package: "MovieListSchema"),
+      ]
+    ),
+    .target(
+      name: "FeatureList",
+      dependencies: [
+        .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+        "Counter",
+        "ContactList",
+        "NavigationList",
+        "MovieList"
       ]
     ),
     .testTarget(

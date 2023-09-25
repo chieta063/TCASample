@@ -3,6 +3,11 @@ import SwiftUI
 
 public struct TreeNavigationRootView: View {
   let store: StoreOf<TreeNavigationRootFeature>
+  
+  init(store: StoreOf<TreeNavigationRootFeature>) {
+    self.store = store
+  }
+  
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       List {

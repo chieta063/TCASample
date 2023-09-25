@@ -4,6 +4,10 @@ import SwiftUI
 public struct NavigationListView: View {
   let store: StoreOf<NavigationListFeature>
   
+  public init(store: StoreOf<NavigationListFeature>) {
+    self.store = store
+  }
+  
   public var body: some View {
     List {
       Text("Stack-based-Navigation")

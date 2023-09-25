@@ -4,12 +4,18 @@ import Foundation
 public struct TreeNavigationRootFeature: Reducer {
   public struct State: Equatable {
     @PresentationState var destination: Destination.State?
+    
+    public init(destination: Destination.State? = nil) {
+      self.destination = destination
+    }
   }
   
   public enum Action: Equatable {
     case destination(PresentationAction<Destination.Action>)
     case toFirstTree
   }
+  
+  public init() {}
   
   public var body: some ReducerOf<Self> {
     Reduce { state, action in

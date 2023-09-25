@@ -4,6 +4,10 @@ import ComposableArchitecture
 public struct FirstTreeView: View {
   let store: StoreOf<FirstTreeFeature>
   
+  public init(store: StoreOf<FirstTreeFeature>) {
+    self.store = store
+  }
+  
   public var body: some View {
     WithViewStore(store, observe: {$0}) { viewStore in
       List {

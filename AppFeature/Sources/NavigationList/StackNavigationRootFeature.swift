@@ -4,6 +4,10 @@ import Foundation
 public struct StackNavigationRootFeature: Reducer {
   public struct State {
     var path = StackState<Path.State>()
+    
+    public init(path: StackState<StackNavigationRootFeature.Path.State> = StackState<Path.State>()) {
+      self.path = path
+    }
   }
   
   public enum Action {

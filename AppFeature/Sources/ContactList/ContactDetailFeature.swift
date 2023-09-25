@@ -10,6 +10,11 @@ public struct ContactDetailFeature: Reducer {
   public struct State: Equatable {
     @PresentationState var destination: Destination.State?
     var contact: Contact
+    
+    public init(destination: Destination.State? = nil, contact: Contact) {
+      self.destination = destination
+      self.contact = contact
+    }
   }
   
   public enum Action: Equatable {
@@ -25,6 +30,8 @@ public struct ContactDetailFeature: Reducer {
   }
   
   @Dependency(\.dismiss) var dismiss
+  
+  public init() {}
   
   public func reduce(into state: inout State, action: Action) -> Effect<Action> {
     switch action {

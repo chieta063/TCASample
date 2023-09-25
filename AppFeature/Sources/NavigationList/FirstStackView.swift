@@ -4,6 +4,10 @@ import SwiftUI
 public struct FirstStackView: View {
   let store: StoreOf<FirstStackFeature>
   
+  public init(store: StoreOf<FirstStackFeature>) {
+    self.store = store
+  }
+  
   public var body: some View {
     NavigationLink(
       "To Second View",

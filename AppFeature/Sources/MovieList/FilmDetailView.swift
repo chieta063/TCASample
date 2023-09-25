@@ -4,6 +4,10 @@ import SwiftUI
 public struct FilmDetailView: View {
   public let store: StoreOf<FilmDetailFeature>
   
+  public init(store: StoreOf<FilmDetailFeature>) {
+    self.store = store
+  }
+  
   public var body: some View {
     WithViewStore(store, observe: {$0}) { viewStore in
       VStack {

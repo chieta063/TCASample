@@ -4,6 +4,10 @@ import Foundation
 public struct AddContactFeature: Reducer {
   public struct State: Equatable {
     var contact: Contact
+    
+    public init(contact: Contact) {
+      self.contact = contact
+    }
   }
   
   public enum Action: Equatable {
@@ -17,6 +21,9 @@ public struct AddContactFeature: Reducer {
   }
   
   @Dependency(\.dismiss) var dismiss
+  
+  public init() {
+  }
   
   public func reduce(into state: inout State, action: Action) -> Effect<Action> {
     switch action {

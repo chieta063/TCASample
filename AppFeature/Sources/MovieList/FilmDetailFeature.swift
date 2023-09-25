@@ -8,6 +8,13 @@ public struct FilmDetailFeature: Reducer {
     var isLoading: Bool = false
     var film: FilmDetail?
     var displayError: DisplayError?
+    
+    public init(filmId: ID, isLoading: Bool = false, film: FilmDetail? = nil, displayError: DisplayError? = nil) {
+      self.filmId = filmId
+      self.isLoading = isLoading
+      self.film = film
+      self.displayError = displayError
+    }
   }
   
   public enum Action: Equatable {
@@ -17,6 +24,8 @@ public struct FilmDetailFeature: Reducer {
   }
   
   @Dependency(\.starwarsClient) var client
+  
+  public init() {}
   
   public func reduce(into state: inout State, action: Action) -> Effect<Action> {
     switch action {

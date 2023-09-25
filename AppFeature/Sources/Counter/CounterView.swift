@@ -2,7 +2,11 @@ import ComposableArchitecture
 import SwiftUI
 
 public struct CounterView: View {
-  public let store: StoreOf<CounterFeature>
+  let store: StoreOf<CounterFeature>
+  
+  public init(store: StoreOf<CounterFeature>) {
+    self.store = store
+  }
   
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in

@@ -6,6 +6,11 @@ public struct ContactsFeature: Reducer {
   public struct State: Equatable {
     @PresentationState var destination: Destination.State?
     var contacts: IdentifiedArrayOf<Contact> = []
+    
+    public init(destination: Destination.State? = nil, contacts: IdentifiedArrayOf<Contact> = []) {
+      self.destination = destination
+      self.contacts = contacts
+    }
   }
   
   public enum Action: Equatable {
@@ -22,6 +27,8 @@ public struct ContactsFeature: Reducer {
   @Dependency(\.uuid) var uuid
   
   @Environment(\.presentationMode) var presentation
+  
+  public init() {}
   
   public var body: some ReducerOf<Self> {
     Reduce { state, action in
@@ -63,6 +70,8 @@ extension ContactsFeature {
       case addContact(AddContactFeature.Action)
       case contact(ContactDetailFeature.Action)
     }
+    
+    public init() {}
     
     public var body: some ReducerOf<Self> {
       Scope(state: /State.addContact, action: /Action.addContact) {

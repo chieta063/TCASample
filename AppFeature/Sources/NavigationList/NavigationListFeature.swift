@@ -4,6 +4,10 @@ import ComposableArchitecture
 public struct NavigationListFeature: Reducer {
   public struct State {
     @PresentationState var destination: Destination.State?
+    
+    public init(destination: Destination.State? = nil) {
+      self.destination = destination
+    }
   }
   
   public enum Action {
@@ -11,6 +15,8 @@ public struct NavigationListFeature: Reducer {
     case stackNavigationRoot
     case treeNavigationRoot
   }
+  
+  public init() {}
   
   public var body: some ReducerOf<Self> {
     Reduce { state, action in

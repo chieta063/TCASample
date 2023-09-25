@@ -4,6 +4,10 @@ import ComposableArchitecture
 public struct SecondTreeView: View {
   let store: StoreOf<SecondTreeFeature>
   
+  public init(store: StoreOf<SecondTreeFeature>) {
+    self.store = store
+  }
+  
   public var body: some View {
     WithViewStore(store, observe: {$0}) { viewStore in
       VStack {

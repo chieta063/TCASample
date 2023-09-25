@@ -7,6 +7,12 @@ public struct StarwarsDictionaryFeature: Reducer {
     var isInitialized: Bool = false
     var isLoading: Bool = false
     var filmList: IdentifiedArrayOf<FilmData> = []
+    
+    public init(isInitialized: Bool = false, isLoading: Bool = false, filmList: IdentifiedArrayOf<FilmData> = []) {
+      self.isInitialized = isInitialized
+      self.isLoading = isLoading
+      self.filmList = filmList
+    }
   }
   
   public enum Action: Equatable {
@@ -16,6 +22,8 @@ public struct StarwarsDictionaryFeature: Reducer {
   }
   
   @Dependency(\.starwarsClient) var client
+  
+  public init() {}
   
   public func reduce(into state: inout State, action: Action) -> Effect<Action> {
     switch action {

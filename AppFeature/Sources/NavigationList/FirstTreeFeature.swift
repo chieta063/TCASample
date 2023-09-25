@@ -4,6 +4,10 @@ import ComposableArchitecture
 public struct FirstTreeFeature: Reducer {
   public struct State: Equatable {
     @PresentationState var destination: Destination.State?
+    
+    public init(destination: Destination.State? = nil) {
+      self.destination = destination
+    }
   }
   
   public enum Action: Equatable {
@@ -13,6 +17,8 @@ public struct FirstTreeFeature: Reducer {
   }
   
   @Dependency(\.dismiss) var dismiss
+  
+  public init() {}
   
   public var body: some ReducerOf<Self> {
     Reduce { state, action in

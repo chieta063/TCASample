@@ -18,6 +18,7 @@ let package = Package(
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.2.0"),
     .package(url: "https://github.com/apollographql/apollo-ios", from: "1.4.0"),
     .package(path: "MovieListSchema"),
+    .package(url: "https://github.com/pointfreeco/swift-snapshot-testing", from: "1.12.0"),
   ],
   targets: [
     .target(
@@ -59,8 +60,11 @@ let package = Package(
       ]
     ),
     .testTarget(
-      name: "AppFeatureTests",
-      dependencies: ["Counter"]
-    ),
+      name: "CounterTests",
+      dependencies: [
+        "Counter",
+        .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
+      ]
+    )
   ]
 )

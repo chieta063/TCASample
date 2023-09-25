@@ -13,7 +13,11 @@
 		53154C8E2ABD63A100A80D97 /* AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53154C8D2ABD63A100A80D97 /* AppTests.swift */; };
 		53154C982ABD63A100A80D97 /* AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53154C972ABD63A100A80D97 /* AppUITests.swift */; };
 		53154C9A2ABD63A100A80D97 /* AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53154C992ABD63A100A80D97 /* AppUITestsLaunchTests.swift */; };
-		5319792A2AC1336C00431D9F /* FeatureList in Frameworks */ = {isa = PBXBuildFile; productRef = 531979292AC1336C00431D9F /* FeatureList */; };
+		5358E16F2AC1501400A1029A /* ContactList in Frameworks */ = {isa = PBXBuildFile; productRef = 5358E16E2AC1501400A1029A /* ContactList */; };
+		5358E1712AC1501400A1029A /* Counter in Frameworks */ = {isa = PBXBuildFile; productRef = 5358E1702AC1501400A1029A /* Counter */; };
+		5358E1732AC1501400A1029A /* FeatureList in Frameworks */ = {isa = PBXBuildFile; productRef = 5358E1722AC1501400A1029A /* FeatureList */; };
+		5358E1752AC1501400A1029A /* MovieList in Frameworks */ = {isa = PBXBuildFile; productRef = 5358E1742AC1501400A1029A /* MovieList */; };
+		5358E1772AC1501400A1029A /* NavigationList in Frameworks */ = {isa = PBXBuildFile; productRef = 5358E1762AC1501400A1029A /* NavigationList */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +54,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5319792A2AC1336C00431D9F /* FeatureList in Frameworks */,
+				5358E16F2AC1501400A1029A /* ContactList in Frameworks */,
+				5358E1752AC1501400A1029A /* MovieList in Frameworks */,
+				5358E1732AC1501400A1029A /* FeatureList in Frameworks */,
+				5358E1772AC1501400A1029A /* NavigationList in Frameworks */,
+				5358E1712AC1501400A1029A /* Counter in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,7 +159,11 @@
 			);
 			name = App;
 			packageProductDependencies = (
-				531979292AC1336C00431D9F /* FeatureList */,
+				5358E16E2AC1501400A1029A /* ContactList */,
+				5358E1702AC1501400A1029A /* Counter */,
+				5358E1722AC1501400A1029A /* FeatureList */,
+				5358E1742AC1501400A1029A /* MovieList */,
+				5358E1762AC1501400A1029A /* NavigationList */,
 			);
 			productName = App;
 			productReference = 53154C792ABD63A000A80D97 /* App.app */;
@@ -609,9 +621,25 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		531979292AC1336C00431D9F /* FeatureList */ = {
+		5358E16E2AC1501400A1029A /* ContactList */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ContactList;
+		};
+		5358E1702AC1501400A1029A /* Counter */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Counter;
+		};
+		5358E1722AC1501400A1029A /* FeatureList */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FeatureList;
+		};
+		5358E1742AC1501400A1029A /* MovieList */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MovieList;
+		};
+		5358E1762AC1501400A1029A /* NavigationList */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = NavigationList;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

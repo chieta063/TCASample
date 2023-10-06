@@ -5,14 +5,15 @@ import PackageDescription
 
 let package = Package(
   name: "AppFeature",
-  platforms: [.iOS(.v16)],
+  platforms: [.iOS(.v17)],
   products: [
     // Products define the executables and libraries a package produces, making them visible to other packages.
     .library(name: "Counter", targets: ["Counter"]),
     .library(name: "ContactList", targets: ["ContactList"]),
     .library(name: "NavigationList", targets: ["NavigationList"]),
     .library(name: "MovieList", targets: ["MovieList"]),
-    .library(name: "FeatureList", targets: ["FeatureList"])
+    .library(name: "FeatureList", targets: ["FeatureList"]),
+    .library(name: "RecipeList", targets: ["RecipeList"])
   ],
   dependencies: [
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.2.0"),
@@ -58,6 +59,9 @@ let package = Package(
         "NavigationList",
         "MovieList"
       ]
+    ),
+    .target(
+      name: "RecipeList"
     ),
     .testTarget(
       name: "CounterTests",

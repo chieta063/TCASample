@@ -2,7 +2,7 @@ import Foundation
 import SwiftData
 
 @Model
-struct Recipe: Identifiable {
+class Recipe: Identifiable {
   @Attribute(.unique) var id: String
   var title: String
   var recipe: String
@@ -13,5 +13,11 @@ struct Recipe: Identifiable {
     self.title = title
     self.recipe = recipe
     self.createDate = createDate
+  }
+}
+
+extension Recipe {
+  static var preview: Recipe {
+    .init(id: "1", title: "レシピ１", recipe: "レシピ１の作り方", createDate: .init())
   }
 }

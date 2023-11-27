@@ -19,6 +19,8 @@ final class MovieListFeatureTests: XCTestCase {
       initialState: MovieListFeature.State()
     ) {
       MovieListFeature()
+    } withDependencies: { dependency in
+      dependency.starwarsClient = StarwarsClient.testValue
     }
     await store.send(.onAppear) {
       $0.isLoading = true

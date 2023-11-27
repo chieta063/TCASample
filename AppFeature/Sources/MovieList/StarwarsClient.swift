@@ -15,9 +15,12 @@ public enum StarwarsClientError: Error, LocalizedError {
   }
 }
 
+public struct User: Equatable {}
+
 public struct StarwarsClient {
   var fetchAllFilms: () async throws -> [AllFilmsQuery.Data.AllFilms.Film]
   var fetchFilm: (String) async throws -> FilmQuery.Data.Film
+  var post: (User) async throws -> User
 }
 
 extension StarwarsClient: DependencyKey {
@@ -48,18 +51,44 @@ extension StarwarsClient: DependencyKey {
         }
       }
     }
+  } post: { user in
+    do {
+      // TODO: apolloのMutation実行
+//      try await withCheckedThrowingContinuation { continuation in
+//        Network.shared.apollo.perform(mutation: EditUserMutation(
+//          _eq: .init(integerLiteral: user.id),
+//          memo: .init(stringLiteral: user.memo ?? ""),
+//          name: .init(stringLiteral: user.name),
+//          updated_at: .init(stringLiteral: user.updatedAt?.description ?? "")
+//        )) { result in
+//          guard let data = try? result.get().data else {
+//            let error = NSError(domain: "data is nil", code: 0, userInfo: nil)
+//            continuation.resume(throwing: error)
+//            return
+//          }
+//          continuation.resume(returning: data)
+//        }
+//      }
+      return User()
+    } catch {
+      // TODO: エラー処理
+    }
   }
 
   public static var testValue: StarwarsClient = Self {
     MockData.filmListResponse
   } fetchFilm: { _ in
     MockData.filmDetailResponse
+  } post: { _ in
+    User()
   }
 
   public static var previewValue: StarwarsClient = Self {
     MockData.filmListResponse
   } fetchFilm: { _ in
     MockData.filmDetailResponse
+  } post: { _ in
+    User()
   }
 }
 

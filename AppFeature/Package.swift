@@ -13,7 +13,8 @@ let package = Package(
     .library(name: "NavigationList", targets: ["NavigationList"]),
     .library(name: "MovieList", targets: ["MovieList"]),
     .library(name: "FeatureList", targets: ["FeatureList"]),
-    .library(name: "RecipeList", targets: ["RecipeList"])
+    .library(name: "RecipeList", targets: ["RecipeList"]),
+    .library(name: "TabBar", targets: ["TabBar"])
   ],
   dependencies: [
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.2.0"),
@@ -57,11 +58,18 @@ let package = Package(
         "Counter",
         "ContactList",
         "NavigationList",
-        "MovieList"
+        "MovieList",
+        "TabBar"
       ]
     ),
     .target(
       name: "RecipeList"
+    ),
+    .target(
+      name: "TabBar",
+      dependencies: [
+        .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+      ]
     ),
     .testTarget(
       name: "CounterTests",

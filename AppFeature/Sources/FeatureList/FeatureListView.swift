@@ -11,6 +11,7 @@ import Counter
 import MovieList
 import NavigationList
 import SwiftUI
+import TabBar
 
 public struct FeatureListView: View {
   let store: StoreOf<FeatureListFeature>
@@ -48,6 +49,12 @@ public struct FeatureListView: View {
           "Navigations",
           destination: NavigationListView(store: Store(initialState: NavigationListFeature.State(), reducer: {
             NavigationListFeature()
+          }))
+        )
+        NavigationLink(
+          "TabBar",
+          destination: ParentView(store: Store(initialState: ParentFeature.State(firstFeature: .init(), secondFeature: .init()), reducer: {
+            ParentFeature()
           }))
         )
       })
